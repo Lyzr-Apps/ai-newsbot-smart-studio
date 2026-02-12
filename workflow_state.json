@@ -1,0 +1,59 @@
+{
+  "agents": [
+    {
+      "agent_id": "698e0e01d53462d0905232e3",
+      "name": "AI News Curator Agent",
+      "type": "text",
+      "description": "Searches for latest AI news across breaking announcements, research papers, industry trends, and startup news; generates headlines with brief summaries; formats and delivers digest to Slack",
+      "provider": "perplexity",
+      "model": "sonar-reasoning-pro",
+      "has_knowledge_base": false,
+      "has_schedule": true,
+      "tools": ["slack"]
+    }
+  ],
+  "schedules": [
+    {
+      "schedule_id": "698e0e07ebe6fd87d1dcc1b9",
+      "agent_id": "698e0e01d53462d0905232e3",
+      "agent_name": "AI News Curator Agent",
+      "cron_expression": "0 10 * * *",
+      "timezone": "America/New_York",
+      "message": "Generate and send the daily AI news digest to Slack",
+      "is_active": true,
+      "next_run_time": "2026-02-13T10:00:00-05:00"
+    }
+  ],
+  "workflow": {
+    "nodes": [
+      {
+        "id": "input_node",
+        "type": "Input",
+        "label": "Scheduled Trigger (10AM Daily)",
+        "nodeCategory": "input"
+      },
+      {
+        "id": "ai_news_curator",
+        "type": "Agent",
+        "label": "AI News Curator Agent",
+        "nodeCategory": "agent"
+      },
+      {
+        "id": "output_node",
+        "type": "Output",
+        "label": "Slack Digest Delivered",
+        "nodeCategory": "end"
+      }
+    ],
+    "edges": [
+      {
+        "source": "input_node",
+        "target": "ai_news_curator"
+      },
+      {
+        "source": "ai_news_curator",
+        "target": "output_node"
+      }
+    ]
+  }
+}

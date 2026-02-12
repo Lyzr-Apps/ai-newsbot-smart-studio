@@ -1,0 +1,42 @@
+{
+  "agent_name": "AI News Curator Agent",
+  "agent_id": "698e0e01d53462d0905232e3",
+  "description": "Searches for latest AI news across breaking announcements, research papers, industry trends, and startup news; generates headlines with brief summaries; formats and delivers digest to Slack",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "digest_date": "string",
+    "categories": [
+      {
+        "category_name": "string",
+        "stories": [
+          {
+            "headline": "string",
+            "summary": "string",
+            "source": "string"
+          }
+        ]
+      }
+    ],
+    "total_stories": "number",
+    "slack_posted": "boolean"
+  },
+  "example_response": {
+    "digest_date": "sample string",
+    "categories": [
+      {
+        "category_name": "sample string",
+        "stories": [
+          {
+            "headline": "sample string",
+            "summary": "sample string",
+            "source": "sample string"
+          }
+        ]
+      }
+    ],
+    "total_stories": 0,
+    "slack_posted": false
+  }
+}
